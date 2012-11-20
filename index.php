@@ -1,7 +1,40 @@
 <?php
+
 session_start();
+$out='';
+if(!isset($_SESSION['user_id']) && isset($_REQUEST['user']))
+require_once('./includes/db_connect.php');
+$db = db_connect();
+$qr = $db->query ('SELECT user_id, user_pass FROM users WHERE user_name = "' . $_REQUEST['user'] . '";');
+switch($qr->columnCount())
+{
+	case 0: $out .= "The user does not exist.";
+	break;
+	case 1: $result = $qr->fetch(PDO::FETCH_ASSOC);
+			if(strcmp($_REQUEST['pass'], $result['user_pass']) == 0)
+			{
+				$_SESSION['user_id'] = $result['user_id'];
+				$_SESSION['user_name'] = $_REQUEST['user'];
+				// Redirect to exam page if user authentication succeeds
+				$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+				header('Location: http://'.$_SERVER['HTTP_HOST'].$uri.'/exam.php');
+				exit;
+			}
+			else
+			{
+				$out .= "Password does not match with our records.";
+			}
+			break;
+	default:$out .= "An unexpected error has occured: More than one entry for same user. <br />Please contact admin with your details";
+}
+  
 $title='Login - Online examination system';
-include('./template/header.php');
+require('./template/header.php');
+
+if(!empty($out))
+{
+	echo "<div class='error'>{$out}</div>";
+}
 ?>
 <form name="loginForm" method="post" action="./index.php">
 <fieldset>
@@ -12,6 +45,6 @@ Password: <input type="password" name="pass" id="pass" /><br />
 </fieldset>
 </form>
 <div class="center">
-<a href="#" onclick="document.getElementById('user').value = 'test@user.com';document.getElementById('pass').value = 'test'">Autofill login details</a>
+<a href="#" onclick="document.getElementById('user').value = 'test';document.getElementById('pass').value = 'test'">Autofill login details</a>
 </div>
-<?php include('./template/footer.php'); ?>
+<?php require('./template/footer.php'); ?>
