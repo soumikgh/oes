@@ -1,0 +1,9 @@
+DB name: oes
+
+mysql> create table users (
+    -> user_id INT AUTO_INCREMENT,
+    -> user_name VARCHAR(30) NOT NULL,
+    -> user_email VARCHAR(30),
+    -> user_pass VARCHAR(30) NOT NULL,
+    -> PRIMARY KEY(user_id)
+    -> );
