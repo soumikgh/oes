@@ -6,8 +6,9 @@ if(!isset($_SESSION['user_id']) && isset($_REQUEST['user']))
 {
 	require_once('./includes/db_connect.php');
 	$db = db_connect();
-	$qr = $db->query ('SELECT user_id, user_pass FROM users WHERE user_name = "' . $_REQUEST['user'] . '";');
-	switch($qr->columnCount())
+	$qr = $db->prepare("SELECT user_id, user_pass FROM users WHERE user_name = ?");
+	$qr->execute(array($_REQUEST['user']));
+	switch($qr->rowCount())
 	{
 		case 0: $out .= "The user does not exist.";
 		break;
@@ -16,6 +17,7 @@ if(!isset($_SESSION['user_id']) && isset($_REQUEST['user']))
 				{
 					$_SESSION['user_id'] = $result['user_id'];
 					$_SESSION['user_name'] = $_REQUEST['user'];
+					
 					// Redirect to exam page if user authentication succeeds
 					$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 					header('Location: http://'.$_SERVER['HTTP_HOST'].$uri.'/exam.php');
