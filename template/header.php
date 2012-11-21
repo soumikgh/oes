@@ -6,3 +6,5 @@
 		<title><?php echo $title; ?></title>
 	</head>
 	<body>
+    <div class="wraper">
+    <center><img src="./images/logo.png" alt="logo" class="logo"/></center>

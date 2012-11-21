@@ -8,6 +8,41 @@
 body {
 	margin-left:auto;
 	margin-right:auto;
-	width: 600px; 
+	margin-top:0%;
+	width: 90%; 
 	
+}
+.wraper {
+	width:90%;
+	background-color:#F5F5F5;
+	margin-left:auto;
+	margin-right:auto;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-moz-box-shadow: 0 0 15px 7px #888;
+	-webkit-box-shadow: 0 0 15px 7px#888;
+	box-shadow: 0 0 15px 7px #888;
+	margin-top:1%;
+	margin-bottom:1%;
+}
+
+.LoginForm {
+	width:500px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.LoginFormSubmit {
+	padding-left:14%;
+
+}
+
+.logo {
+	padding-top:15px;
+	padding-bottom:10px;
+}
+
+.ShowError {
+	color:#ED3237;
 }
