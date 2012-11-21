@@ -11,3 +11,12 @@ body {
 	width: 600px; 
 	border: 1px solid grey;
 }
+
+.corr_ans {
+	background: url("./images/green-tick.png") no-repeat scroll right transparent;
+	margin-bottom: 20px;
+}
+
+.inc_ans {
+	background: url("./images/red-cross.png") no-repeat scroll right transparent;
+}

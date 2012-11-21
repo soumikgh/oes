@@ -29,18 +29,22 @@ for ($i=1; $i<=5; $i++)
 }
 echo "You have scored " . (5 - count($incorrect)) . " out of 5.<br /><br />";
 
-echo "<h3>Your incorrect answers are :</h3>";
-
-foreach($incorrect as $key => $value)
+if(count($incorrect) > 0)
 {
-	$qr = $db->prepare("SELECT q_body, q_ans$value[0], q_ans$value[1] FROM questions WHERE q_id = ?");
-	$qr->execute(array($key));
-	$result = $qr->fetch(PDO::FETCH_ASSOC);
-	
-	echo '<div class="question">' . $result['q_body'] . '</div>';
-	echo '<div class="inc_ans">Your answer: ' . $result["q_ans$value[0]"] . '</div>';
-	echo '<div class="corr_ans">Correct answer: ' . $result["q_ans$value[1]"] . '</div>';
+	echo "<h3>Your incorrect answers are :</h3>";
+
+	foreach($incorrect as $key => $value)
+	{
+		$qr = $db->prepare("SELECT q_body, q_ans$value[0], q_ans$value[1] FROM questions WHERE q_id = ?");
+		$qr->execute(array($key));
+		$result = $qr->fetch(PDO::FETCH_ASSOC);
+		
+		echo '<div class="inc_ques">' . $result['q_body'] . '</div>';
+		echo '<div class="inc_ans">Your answer: ' . $result["q_ans$value[0]"] . '</div>';
+		echo '<div class="corr_ans">Correct answer: ' . $result["q_ans$value[1]"] . '</div>';
+	}
 }
+
 require('./template/footer.php');	
 	
 ?>
