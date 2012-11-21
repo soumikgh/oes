@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.24, for debian-linux-gnu (i686)
+-- MySQL dump 10.13  Distrib 5.5.28, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: oes
 -- ------------------------------------------------------
--- Server version	5.5.24-0ubuntu0.12.04.1
+-- Server version	5.5.28-0ubuntu0.12.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,35 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `questions`
+--
+
+DROP TABLE IF EXISTS `questions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `questions` (
+  `q_id` int(11) NOT NULL AUTO_INCREMENT,
+  `q_body` varchar(50) NOT NULL,
+  `q_ans1` varchar(30) NOT NULL,
+  `q_ans2` varchar(30) NOT NULL,
+  `q_ans3` varchar(30) NOT NULL,
+  `q_ans4` varchar(30) NOT NULL,
+  `q_correct_ans` int(11) NOT NULL,
+  PRIMARY KEY (`q_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `questions`
+--
+
+LOCK TABLES `questions` WRITE;
+/*!40000 ALTER TABLE `questions` DISABLE KEYS */;
+INSERT INTO `questions` VALUES (1,'Who is the current President of India?','Phunsukh Wangdu','A. P. J. Abdul Kalam','Pranab Mukherjee','Prativa Patel',3),(2,'Who is the current President of India?','Phunsukh Wangdu','A. P. J. Abdul Kalam','Pranab Mukherjee','Prativa Patel',3),(3,'Who is the current President of India?','Phunsukh Wangdu','A. P. J. Abdul Kalam','Pranab Mukherjee','Prativa Patel',3),(4,'Who is the current President of India?','Phunsukh Wangdu','A. P. J. Abdul Kalam','Pranab Mukherjee','Prativa Patel',3),(5,'Who is the current President of India?','Phunsukh Wangdu','A. P. J. Abdul Kalam','Pranab Mukherjee','Prativa Patel',3),(6,'Who is the current President of India?','Phunsukh Wangdu','A. P. J. Abdul Kalam','Pranab Mukherjee','Prativa Patel',3),(7,'Who is the current President of India?','Phunsukh Wangdu','A. P. J. Abdul Kalam','Pranab Mukherjee','Prativa Patel',3),(8,'Who is the current President of India?','Phunsukh Wangdu','A. P. J. Abdul Kalam','Pranab Mukherjee','Prativa Patel',3),(9,'Who is the current President of India?','Phunsukh Wangdu','A. P. J. Abdul Kalam','Pranab Mukherjee','Prativa Patel',3),(10,'Who is the current President of India?','Phunsukh Wangdu','A. P. J. Abdul Kalam','Pranab Mukherjee','Prativa Patel',3);
+/*!40000 ALTER TABLE `questions` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
@@ -50,4 +79,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-11-20 21:01:09
+-- Dump completed on 2012-11-21 12:39:41
