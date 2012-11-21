@@ -10,7 +10,7 @@ if(!isset($_SESSION['user_id']) && isset($_REQUEST['user']))
 	$qr->execute(array($_REQUEST['user']));
 	switch($qr->rowCount())
 	{
-		case 0: $out .= "The user does not exist.";
+		case 0: $out .= "<center><h3 class='ShowError'>The user does not exist.</h3></center>";
 		break;
 		case 1: $result = $qr->fetch(PDO::FETCH_ASSOC);
 				if(strcmp($_REQUEST['pass'], $result['user_pass']) == 0)
@@ -25,10 +25,10 @@ if(!isset($_SESSION['user_id']) && isset($_REQUEST['user']))
 				}
 				else
 				{
-					$out .= "Password does not match with our records.";
+					$out .= "<center><h3 class='ShowError'>Password does not match with our records.</h3></center>";
 				}
 				break;
-		default:$out .= "An unexpected error has occured: More than one entry for same user. <br />Please contact admin with your details";
+		default:$out .= "<center><h3 class='ShowError'>An unexpected error has occured: More than one entry for same user. <br />Please contact admin with your details</h3></center>";
 	}
 }
   
@@ -40,12 +40,12 @@ if(!empty($out))
 	echo "<div class='error'>{$out}</div>";
 }
 ?>
-<form name="loginForm" method="post" action="./index.php">
+<form name="loginForm" method="post" action="./index.php" class="LoginForm" >
 <fieldset>
 <legend>Log In :</legend>
 Username: <input type="text" name="user" id="user" /><br />
 Password: <input type="password" name="pass" id="pass" /><br />
-<input type="submit" value="Submit" name="submit" />
+<span class="LoginFormSubmit"></span><input type="submit" value="Submit" name="submit"  />
 </fieldset>
 </form>
 <div class="center">
