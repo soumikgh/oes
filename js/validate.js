@@ -11,7 +11,7 @@ function validateAnswers()
 				isChecked = true;
 			}
 		}
-		if(isChecked)
+		if(!isChecked)
 		{
 			alert("Please enter an answer for question " + i + ".");
 			return false;
