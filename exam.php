@@ -33,6 +33,6 @@ for ($i=1; $i<=5; $i++)
 	}
 	echo '</div>';
 }
-echo '<input type="submit" value="Submit" />';
+echo '<input type="submit" value="Submit" onClick="return validateAnswers()" />';
 require('./template/footer.php');
 ?>
