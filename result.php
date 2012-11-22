@@ -9,7 +9,7 @@ if(!isset($_SESSION['user_id']))
 
 elseif(!isset($_POST['qSubmit']))
 {
-	die('You have not give the exam. Please proceed to the <a href="./exam.php">exam page</a>.');
+	die('You have not given the exam. Please proceed to the <a href="./exam.php">exam page</a>.');
 }
 
 $title='Results - Online examination system';
