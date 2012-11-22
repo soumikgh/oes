@@ -1,28 +1,38 @@
 <?php
-	require_once('./includes/db_connect.php');
-	global $question_posted_id;
-	$title='Question Paper - Answer the following questions';
-	require_once('./template/header.php');
-	$db = db_connect();
-	$qr = $db->prepare("SELECT * from questions");
-	$qr->execute();  //execution of the sql
-	$qr->fetch(PDO::FETCH_ASSOC);  //Saving the sql query outout as associative array in variable $qr
-	$rand = rand(1,10); //For Random Question Generation
+
+session_start();
+
+if(!isset($_SESSION['user_id']))
+{
+	die('You are not logged in. Please <a href="./">log in</a>.');
+}
+
+$title='Questions - Online examination system';
+require('./template/header.php');
+require_once('./includes/db_connect.php');
+
+$db = db_connect();
+$qr = $db->prepare("SELECT q_body, q_ans1, q_ans2, q_ans3, q_ans4 FROM questions WHERE q_id = ?");
+$qs = array();
+
+echo '<div class="questionsBody"><form name="questions" method="post" action="result.php">';
+
+for ($i=1; $i<=5; $i++)
+{
+	while(in_array($qno = rand(1, 10), $qs)); //Find a number not in the array
+	$qs[] = $qno; //Push the number into the array
+	echo '<input type="hidden" name="q' . $i . '" value="' . $qno . '" />';
 	
-	if(in_array($question_posted_id) == $rand) //Not sure
+	$qr->execute(array($qno));
+	$result = $qr->fetch(PDO::FETCH_ASSOC);
+	echo '<div class="question"><strong><font color="blue">Q'.$i.')</font></strong>&nbsp;&nbsp;&nbsp;' . $result['q_body'] . '</div>';
+	echo '<div class="answer">';
+	for ($j=1; $j<=4; $j++)
 	{
-		$qr->execute(); //Not sure about this line	
+		echo '&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" class="answer" name="a' . $i . '" value="'. $j . '" />' . $result["q_ans$j"];
 	}
-	else
-	{
-		echo "<div class='question'>".$qr['question']."</div><br >"; ?>
-        <form name="answer" method="post" action="">
-        <?php 
-		echo "<div class='answer'><input type='radio' name='answer' value='".$qr['ans1']."' /><input type='radio' name='answer' value='".$qr['ans2']."' /><br /><input type='radio' name='answer' value='".$qr['ans3']."' /><input type='radio' name='answer' value='".$qr['ans4']."' />"; 
-		?>
-        </form>
-        <?php
-		$question_posted_id[] = $qr['q_id'];  //Not sure
-	}
-	require_once('./template/footer.php');
+	echo '</div>';
+}
+echo '</div><center></span><input type="submit" value="Submit" onClick="return validateAnswers()" /></center>';
+require('./template/footer.php');
 ?>

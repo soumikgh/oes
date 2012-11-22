@@ -10,7 +10,7 @@ body {
 	margin-right:auto;
 	margin-top:0%;
 	width: 90%; 
-	
+
 }
 .wraper {
 	width:90%;
@@ -45,4 +45,42 @@ body {
 
 .ShowError {
 	color:#ED3237;
+}
+
+
+.questionsBody {
+	width:50%;
+	margin-left:25%;
+	margin-right:auto;
+}
+
+.answer {
+	margin-bottom:15px;
+	margin-left:2%;
+}
+
+
+.resultBody {
+	width:50%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.IncorrectAnswer {
+	color:#C00;
+}
+
+.inc_ques {
+	margin-left:10px;
+}
+
+.corr_ans {
+	background: url("./images/green-tick.png") no-repeat scroll right transparent;
+	margin-bottom: 20px;
+	margin-left: 25px;
+}
+
+.inc_ans {
+	background: url("./images/red-cross.png") no-repeat scroll right transparent;
+	margin-left:25px;
 }

@@ -8,14 +8,14 @@ mysql> create table users (
     -> PRIMARY KEY(user_id)
     -> );
 
-table questions create query (if needed)
+mysql> create table questions (
+    -> q_id INT AUTO_INCREMENT,
+    -> q_body VARCHAR(50) NOT NULL,
+    -> q_ans1 VARCHAR(30) NOT NULL,
+    -> q_ans2 VARCHAR(30) NOT NULL,
+    -> q_ans3 VARCHAR(30) NOT NULL,
+    -> q_ans4 VARCHAR(30) NOT NULL,
+    -> q_correct_ans INT NOT NULL,
+    -> PRIMARY KEY(q_id)
+    -> );
 
-CREATE TABLE IF NOT EXISTS `questions` (
-  `q_id` int(11) NOT NULL AUTO_INCREMENT,
-  `question` varchar(1000) NOT NULL,
-  `ans1` varchar(500) NOT NULL,
-  `ans2` varchar(500) NOT NULL,
-  `ans3` varchar(500) NOT NULL,
-  `ans4` varchar(500) NOT NULL,
-  PRIMARY KEY (`q_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
