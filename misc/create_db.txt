@@ -1,21 +1,21 @@
 DB name: oes
 
-mysql> create table users (
-    -> user_id INT AUTO_INCREMENT,
-    -> user_name VARCHAR(30) NOT NULL,
-    -> user_email VARCHAR(30),
-    -> user_pass VARCHAR(30) NOT NULL,
-    -> PRIMARY KEY(user_id)
-    -> );
+create table users (
+user_id INT AUTO_INCREMENT,
+user_name VARCHAR(30) NOT NULL,
+user_email VARCHAR(30),
+user_pass VARCHAR(30) NOT NULL,
+PRIMARY KEY(user_id)
+);
 
-mysql> create table questions (
-    -> q_id INT AUTO_INCREMENT,
-    -> q_body VARCHAR(50) NOT NULL,
-    -> q_ans1 VARCHAR(30) NOT NULL,
-    -> q_ans2 VARCHAR(30) NOT NULL,
-    -> q_ans3 VARCHAR(30) NOT NULL,
-    -> q_ans4 VARCHAR(30) NOT NULL,
-    -> q_correct_ans INT NOT NULL,
-    -> PRIMARY KEY(q_id)
-    -> );
+create table questions (
+q_id INT AUTO_INCREMENT,
+q_body VARCHAR(50) NOT NULL,
+q_ans1 VARCHAR(30) NOT NULL,
+q_ans2 VARCHAR(30) NOT NULL,
+q_ans3 VARCHAR(30) NOT NULL,
+q_ans4 VARCHAR(30) NOT NULL,
+q_correct_ans INT NOT NULL,
+PRIMARY KEY(q_id)
+);
 

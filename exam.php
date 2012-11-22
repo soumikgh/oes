@@ -15,7 +15,7 @@ $db = db_connect();
 $qr = $db->prepare("SELECT q_body, q_ans1, q_ans2, q_ans3, q_ans4 FROM questions WHERE q_id = ?");
 $qs = array();
 
-echo '<form name="questions" method="post" action="result.php">';
+echo '<div class="questionsBody"><form name="questions" method="post" action="result.php">';
 
 for ($i=1; $i<=5; $i++)
 {
@@ -25,14 +25,14 @@ for ($i=1; $i<=5; $i++)
 	
 	$qr->execute(array($qno));
 	$result = $qr->fetch(PDO::FETCH_ASSOC);
-	echo '<div class="question">' . $result['q_body'] . '</div>';
+	echo '<div class="question"><span class="corr_ques_no">Q'.$i.')</span>' . $result['q_body'] . '</div>';
 	echo '<div class="answer">';
 	for ($j=1; $j<=4; $j++)
 	{
-		echo '<input type="radio" name="a' . $i . '" value="'. $j . '" />' . $result["q_ans$j"];
+		echo '<input type="radio" class="answer" name="a' . $i . '" value="'. $j . '" />' . $result["q_ans$j"];
 	}
 	echo '</div>';
 }
-echo '<input type="submit" value="Submit" onClick="return validateAnswers()" />';
+echo '</div><center></span><input type="submit" name="qSubmit" value="Submit" /></center>';
 require('./template/footer.php');
 ?>

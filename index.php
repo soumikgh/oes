@@ -35,20 +35,31 @@ if(!isset($_SESSION['user_id']) && isset($_REQUEST['user']))
 $title='Login - Online examination system';
 require('./template/header.php');
 
-if(!empty($out))
+if(!isset($_SESSION['user_id']))
 {
-	echo "<div class='error'>{$out}</div>";
-}
+	if(!empty($out))
+	{
+		echo "<div class='error'>{$out}</div>";
+	}
 ?>
-<form name="loginForm" method="post" action="./index.php">
+<form name="loginForm" class="LoginForm" method="post" action="./index.php">
 <fieldset>
 <legend>Log In :</legend>
 Username: <input type="text" name="user" id="user" /><br />
 Password: <input type="password" name="pass" id="pass" /><br />
-<input type="submit" value="Submit" name="submit" />
+<span class="LoginFormSubmit"></span><input type="submit" value="Submit" name="submit" />
 </fieldset>
 </form>
 <div class="center">
 <a href="#" onclick="document.getElementById('user').value = 'test';document.getElementById('pass').value = 'test'">Autofill login details</a>
 </div>
-<?php require('./template/footer.php'); ?>
+
+<?php
+}
+
+else
+{
+	echo '<div class="info">You are already logged in. Please proceed to the <a href="./exam.php">exam page</a>.</div>';
+}
+
+require('./template/footer.php'); ?>
